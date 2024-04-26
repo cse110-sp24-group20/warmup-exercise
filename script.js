@@ -1,5 +1,5 @@
 // Create trumpet audio to play on button push
-const trumpet = new Audio('audio/trumpet-e4-14829.mp3');
+//const trumpet = new Audio('audio/trumpet-e4-14829.mp3');
 
 document.addEventListener('DOMContentLoaded', function() {
     const sentimentWidget = document.querySelector('.sentiment-widget');
@@ -17,12 +17,14 @@ document.addEventListener('DOMContentLoaded', function() {
     document.body.appendChild(sentimentOutput);
 
     // Configuration for each sentiment
+    //To each sentiment, a text is added, as well as audio and an animation
+    //When the image is pressed this these are the audios and texts that will be displayed
     const sentiments = {
-        '1': { text: 'Oh no, that sounds tough 😢', animation: 'shake' },
-        '2': { text: 'Cheer up, tomorrow is another day! 😟', animation: 'jiggle' },
-        '3': { text: 'Sounds like a regular day! 😐', animation: 'pulse' },
-        '4': { text: 'Glad you had a good day! 😄', animation: 'bounce' },
-        '5': { text: 'Wow, that’s amazing! 🤩', animation: 'tada' }
+        '1': { text: 'Oh no, that sounds tough 😢', audio: '/audio/hoes-mad.mp3', animation: 'shake' },
+        '2': { text: 'Cheer up, tomorrow is another day! 😟', audio: '/audio/trumpet-e4-14829.mp3', animation: 'jiggle' },
+        '3': { text: 'Sounds like a regular day! 😐', audio: '/audio/alright-button-mash.mp3',animation: 'pulse' },
+        '4': { text: 'Glad you had a good day! 😄', audio: '/audio/ui.mp3', animation: 'bounce' },
+        '5': { text: 'Wow, that’s amazing! 🤩', audio: '/audio/anime-wow-sound-effect.mp3', animation: 'tada' }
     };
 
     // Listen for changes in the sentiment widget
@@ -37,7 +39,9 @@ document.addEventListener('DOMContentLoaded', function() {
             sentimentOutput.style.display = 'block';
 
             // Play Audio
-            trumpet.play();
+            /*trumpet.play();*/
+            const audio = new Audio(sentimentInfo.audio);
+            audio.play();
             
             // Play animation
             selectedImage.style.animation = `${sentimentInfo.animation} 1s ease`;
