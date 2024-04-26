@@ -41,7 +41,6 @@ header h1 {
     justify-content: center; 
     gap: 25px;
     padding: 25px;
-    display: flex;
     flex-wrap: wrap;
 }
 
