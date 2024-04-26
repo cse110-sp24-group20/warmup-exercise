@@ -32,7 +32,10 @@ body {
 fieldset {
     background-color: rgba(255, 255, 255, 0.1); /*Background color with transparency*/
     padding: 20px;/*Padding around the fieldset*/
-   
+    width: 90%; /*Set width to 90% of the parent container*/
+    max-width: 600px; /*Set maximum width to 600px*/
+    margin: 0 auto; /*Center align horizontally*/
+    box-sizing: border-box; /*Include padding and border in the elements total width and height*/
 }
 
 /*Header h1: Stles for the main heading*/
