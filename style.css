@@ -1,3 +1,22 @@
+@media (max-width: 599px) {
+    :root {
+        --imgsize: 1.7cm;
+    }
+  }
+  
+  @media (min-width: 600px) and (max-width: 1023px) {
+    :root {
+        --imgsize: 4cm;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    :root {
+        --imgsize: 6cm;
+    }
+  
+  }
+
 body {
     margin: 40px; 
     background-image: url('img/background.jpg');
@@ -29,8 +48,8 @@ header h1 {
 }
 
 .sentiment-widget img {
-    width: 50px; 
-    height: 50px; 
+    width: var(--imgsize); 
+    height: var(--imgsize); 
     display: block; 
     margin: 0 auto 10px; 
     transition: transform 0.3s ease; 
