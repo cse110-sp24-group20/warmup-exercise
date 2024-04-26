@@ -1,3 +1,6 @@
+// Create trumpet audio to play on button push
+const trumpet = new Audio('audio/trumpet-e4-14829.mp3');
+
 document.addEventListener('DOMContentLoaded', function() {
     const sentimentWidget = document.querySelector('.sentiment-widget');
     const sentimentOutput = document.createElement('div');
@@ -32,6 +35,9 @@ document.addEventListener('DOMContentLoaded', function() {
             // Show sentiment message
             sentimentOutput.textContent = sentimentInfo.text;
             sentimentOutput.style.display = 'block';
+
+            // Play Audio
+            trumpet.play();
             
             // Play animation
             selectedImage.style.animation = `${sentimentInfo.animation} 1s ease`;
