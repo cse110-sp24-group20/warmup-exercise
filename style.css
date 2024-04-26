@@ -1,18 +1,18 @@
 @media (max-width: 599px) {
     :root {
-        --imgsize: 1.7cm;
+        --imgsize: 5.5cm;
     }
   }
   
   @media (min-width: 600px) and (max-width: 1023px) {
     :root {
-        --imgsize: 4cm;
+        --imgsize: 6cm;
     }
   }
   
   @media (min-width: 1024px) {
     :root {
-        --imgsize: 6cm;
+        --imgsize: 7cm;
     }
   
   }
@@ -41,6 +41,8 @@ header h1 {
     justify-content: center; 
     gap: 25px;
     padding: 25px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .sentiment-widget label {
