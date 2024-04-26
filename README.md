@@ -4,3 +4,4 @@
 * Add submit button.
 * Add action for click button.
 * A placeholder for messages that corresponds to each rating.
+* Added audios to each emoticon selection.
