@@ -1,18 +1,37 @@
-var btn = document.getElementsByClassName("submit");
-var sentiment_select = document.getElementsByName("rating");
-var sentiment_text = document.getElementById("sentiment_text");
+/**
+ * JavaScript functionality for sentiment rating system.
+ * 
+ * This script enhances a sentiment rating system by providing audio feedback and animation based on user selections
+ * It dynamically creates elements to display sentiment messages and applies animations to sentiment images
+ * 
+ * @file This file contains the following functionality:
+ * - Event listener for a button click to hangle submission and navigation
+ * - Event listener for changes in the sentiment widget to display sentiment messages, play audio, and apply animations
+ * - Dynamically creates elements to display sentiment essages
+ * - Defines configuration for each sentiment including text, audio and animation
+ * - Defines keyframe animations for different sentiments
+ * - Event listeners for mouseover and mouseout events on sentiment images to play audio
+ * - Functions to handle submission of sentiment ratings and navigation actions
+ */
+//Get references to HTML elements
+var btn = document.getElementsByClassName("submit"); //Button element
+var sentiment_select = document.getElementsByName("rating");//Radio buttons for sentiment rating
+var sentiment_text = document.getElementById("sentiment_text");//Text element to display sentiment
 var emotion_text = ["Oh no, that sounds tough 😢", 
 "Cheer up, tomorrow is another day! 😟",
 "Sounds like a regular day! 😐",
 "Glad you had a good day! 😄",
 "Wow, that’s amazing! 🤩"
-];
-var audio = document.getElementById("myAudio"); 
-var images = document.querySelectorAll(".sentiment_img");
+]; // Array of emotion texts corresponding to sentiment ratings
+var audio = document.getElementById("myAudio");//Audio element for playing sound on mouseover
+var images = document.querySelectorAll(".sentiment_img");//Collection of sentiment images
 
+//Event listener for button click
 document.getElementById("myButton").addEventListener("click", handleButtonClick);
 
+//Event listener for DOMContentLoaded to create sentiment output element 
 document.addEventListener('DOMContentLoaded', function() {
+    //Create sentiment output element
     const sentimentWidget = document.querySelector('.sentiment-widget');
     const sentimentOutput = document.createElement('div');
     sentimentOutput.id = 'sentiment-output';
@@ -50,7 +69,6 @@ document.addEventListener('DOMContentLoaded', function() {
             sentimentOutput.style.display = 'block';
 
             // Play Audio
-            /*trumpet.play();*/
             const audio = new Audio(sentimentInfo.audio);
             audio.play();
             
@@ -95,51 +113,57 @@ document.styleSheets[0].insertRule(`@keyframes tada {
     100% { transform: scale(1) rotate(0deg); }
 }`, 0);
 
-//Zoon out image and add audio when hover
+//Event listeners for mouseover and mouseout events on sentiment images to play audio
 images.forEach(function(image) {
     image.addEventListener('mouseover', function() {
-        audio.play();
+        audio.play();//play audio
     });
 
     image.addEventListener('mouseout', function() {
-        audio.pause();
+        audio.pause();//Pause audio
         audio.currentTime = 0; // reset audio
     });
 });
 
-//Submit Button Event
+//Function to handle submission of sentiment ratings
 function submit() {
     sentiment_text.textContent = "You have to select one of the sentiment!";
     for(var i = 0; i < sentiment_select.length; i++) {
         if(sentiment_select[i].checked) {
+            //Hide radio button and display corresponding image and text
             var img = sentiment_select[i].nextElementSibling;
             sentiment_select[i].style.display = "none";
             img.style.display = "block";
             img.style.margin = "0 auto";
             sentiment_text.textContent = emotion_text[i];
         } else {
+            //Hide radio button and its parent container
             var img = sentiment_select[i].nextElementSibling;
             sentiment_select[i].style.display = "none";
             sentiment_select[i].parentNode.style.display = "none";
             img.style.display = "none";
         }
     }
+    // Display sentiment text
     sentiment_text.style.display = "inline";
     sentiment_text.margin = "0 auto";
-    audio.muted = true;
+    audio.muted = true;//mute audio
 }
 
+//Function to handle button click events
 function handleButtonClick() {
     var button = document.getElementById("myButton");
     if (button.innerText == "Submit") {
+        //Handle submission and change button text
         submit();
         button.innerText = "Go Back";
         button.onclick = function() {
-            goBack();
+            goBack();// Change button action to go back
         };
     }
 }
 
+//Function to reload page
 function goBack() {
     window.location.reload();
 }
