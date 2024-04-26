@@ -18,8 +18,8 @@ images.forEach(function(image) {
     });
 
     image.addEventListener('mouseout', function() {
-        sound.pause();
-        sound.currentTime = 0; // reset audio
+        audio.pause();
+        audio.currentTime = 0; // reset audio
     });
 });
 
