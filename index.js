@@ -18,21 +18,22 @@ images.forEach(function(image) {
     });
 
     image.addEventListener('mouseout', function() {
-        sound.pause();
-        sound.currentTime = 0; // reset audio
+        audio.pause();
+        audio.currentTime = 0; // reset audio
     });
 });
 
+document.getElementById("myButton").addEventListener("click", handleButtonClick);
+
 function submit() {
     for(var i = 0; i < sentiment_select.length; i++) {
+        var img = sentiment_select[i].nextElementSibling;
         if(sentiment_select[i].checked) {
-            var img = sentiment_select[i].nextElementSibling;
             sentiment_select[i].style.display = "none";
             img.style.display = "block";
             img.style.margin = "0 auto";
             sentiment_text.textContent = emotion_text[i];
         } else {
-            var img = sentiment_select[i].nextElementSibling;
             sentiment_select[i].style.display = "none";
             sentiment_select[i].parentNode.style.display = "none";
             img.style.display = "none";
@@ -41,4 +42,19 @@ function submit() {
     sentiment_text.style.display = "inline";
     sentiment_text.margin = "0 auto";
     audio.muted = true;
+}
+
+function handleButtonClick() {
+    var button = document.getElementById("myButton");
+    if (button.innerText == "Submit") {
+        submit();
+        button.innerText = "Go Back";
+        button.onclick = function() {
+            goBack();
+        };
+    }
+}
+
+function goBack() {
+    window.location.reload();
 }

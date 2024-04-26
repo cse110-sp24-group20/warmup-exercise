@@ -1,3 +1,17 @@
+var btn = document.getElementsByClassName("submit");
+var sentiment_select = document.getElementsByName("rating");
+var sentiment_text = document.getElementById("sentiment_text");
+var emotion_text = ["Oh no, that sounds tough 😢", 
+"Cheer up, tomorrow is another day! 😟",
+"Sounds like a regular day! 😐",
+"Glad you had a good day! 😄",
+"Wow, that’s amazing! 🤩"
+];
+var audio = document.getElementById("myAudio"); 
+var images = document.querySelectorAll(".sentiment_img");
+
+document.getElementById("myButton").addEventListener("click", handleButtonClick);
+
 document.addEventListener('DOMContentLoaded', function() {
     const sentimentWidget = document.querySelector('.sentiment-widget');
     const sentimentOutput = document.createElement('div');
@@ -14,12 +28,14 @@ document.addEventListener('DOMContentLoaded', function() {
     document.body.appendChild(sentimentOutput);
 
     // Configuration for each sentiment
+    //To each sentiment, a text is added, as well as audio and an animation
+    //When the image is pressed this these are the audios and texts that will be displayed
     const sentiments = {
-        '1': { text: 'Oh no, that sounds tough 😢', animation: 'shake' },
-        '2': { text: 'Cheer up, tomorrow is another day! 😟', animation: 'jiggle' },
-        '3': { text: 'Sounds like a regular day! 😐', animation: 'pulse' },
-        '4': { text: 'Glad you had a good day! 😄', animation: 'bounce' },
-        '5': { text: 'Wow, that’s amazing! 🤩', animation: 'tada' }
+        '1': { text: 'Oh no, that sounds tough 😢', audio: '/audio/hoes-mad.mp3', animation: 'shake' },
+        '2': { text: 'Cheer up, tomorrow is another day! 😟', audio: '/audio/trumpet-e4-14829.mp3', animation: 'jiggle' },
+        '3': { text: 'Sounds like a regular day! 😐', audio: '/audio/alright-button-mash.mp3',animation: 'pulse' },
+        '4': { text: 'Glad you had a good day! 😄', audio: '/audio/ui.mp3', animation: 'bounce' },
+        '5': { text: 'Wow, that’s amazing! 🤩', audio: '/audio/anime-wow-sound-effect.mp3', animation: 'tada' }
     };
 
     // Listen for changes in the sentiment widget
@@ -32,6 +48,11 @@ document.addEventListener('DOMContentLoaded', function() {
             // Show sentiment message
             sentimentOutput.textContent = sentimentInfo.text;
             sentimentOutput.style.display = 'block';
+
+            // Play Audio
+            /*trumpet.play();*/
+            const audio = new Audio(sentimentInfo.audio);
+            audio.play();
             
             // Play animation
             selectedImage.style.animation = `${sentimentInfo.animation} 1s ease`;
@@ -73,3 +94,52 @@ document.styleSheets[0].insertRule(`@keyframes tada {
     40%, 60%, 80% { transform: scale(1.1) rotate(-3deg); }
     100% { transform: scale(1) rotate(0deg); }
 }`, 0);
+
+//Zoon out image and add audio when hover
+images.forEach(function(image) {
+    image.addEventListener('mouseover', function() {
+        audio.play();
+    });
+
+    image.addEventListener('mouseout', function() {
+        audio.pause();
+        audio.currentTime = 0; // reset audio
+    });
+});
+
+//Submit Button Event
+function submit() {
+    sentiment_text.textContent = "You have to select one of the sentiment!";
+    for(var i = 0; i < sentiment_select.length; i++) {
+        if(sentiment_select[i].checked) {
+            var img = sentiment_select[i].nextElementSibling;
+            sentiment_select[i].style.display = "none";
+            img.style.display = "block";
+            img.style.margin = "0 auto";
+            sentiment_text.textContent = emotion_text[i];
+        } else {
+            var img = sentiment_select[i].nextElementSibling;
+            sentiment_select[i].style.display = "none";
+            sentiment_select[i].parentNode.style.display = "none";
+            img.style.display = "none";
+        }
+    }
+    sentiment_text.style.display = "inline";
+    sentiment_text.margin = "0 auto";
+    audio.muted = true;
+}
+
+function handleButtonClick() {
+    var button = document.getElementById("myButton");
+    if (button.innerText == "Submit") {
+        submit();
+        button.innerText = "Go Back";
+        button.onclick = function() {
+            goBack();
+        };
+    }
+}
+
+function goBack() {
+    window.location.reload();
+}

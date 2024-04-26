@@ -1,15 +1,17 @@
+/*Media Queries: Define CSS rules based on screen width*/
+/*For screens with a maximum width of 599px*/
 @media (max-width: 599px) {
     :root {
         --imgsize: 5.5cm;
     }
   }
-  
+  /*For screens with a minimum width of 600px and maximum width of 1023px*/
   @media (min-width: 600px) and (max-width: 1023px) {
     :root {
         --imgsize: 6cm;
     }
   }
-  
+  /*For screens with a minimum width of 1024px*/
   @media (min-width: 1024px) {
     :root {
         --imgsize: 7cm;
@@ -17,25 +19,32 @@
   
   }
 
+/*Body: Syles for the body element*/
 body {
-    margin: 40px; 
-    background-image: url('img/background.jpg');
-    background-size: cover; 
-    background-position: center; 
-    background-attachment: fixed; 
+    margin: 40px; /*Margin around the body*/
+    background-image: url('img/background.jpg'); /*Background image*/
+    background-size: cover; /*Cover the entire image*/
+    background-position: center; /*Center the background image*/
+    background-attachment: fixed; /*Fix the background image*/
 }
 
+/*Fieldset: Styles for fieldset element*/
 fieldset {
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-   
+    background-color: rgba(255, 255, 255, 0.1); /*Background color with transparency*/
+    padding: 20px;/*Padding around the fieldset*/
+    width: 90%; /*Set width to 90% of the parent container*/
+    max-width: 600px; /*Set maximum width to 600px*/
+    margin: 0 auto; /*Center align horizontally*/
+    box-sizing: border-box; /*Include padding and border in the elements total width and height*/
 }
 
+/*Header h1: Stles for the main heading*/
 header h1 {
-    color: #a18cd1;
-    text-align: center;
+    color: #a18cd1; /*Text color*/
+    text-align: center; /*Center align the text*/
 }
 
+/*Sentiment Widget: Styles for the sentiment rating widget*/
 .sentiment-widget {
     display: flex;
     justify-content: center; 
@@ -44,82 +53,93 @@ header h1 {
     flex-wrap: wrap;
 }
 
+/*Sentiment Widget Label: Styles for the labels within the widget*/
 .sentiment-widget label {
-    cursor: pointer; 
+    cursor: pointer; /*Change cursor to pointer on hover*/
 }
 
+/*Sentiment Widget Image: Styles for the images within the widget*/
 .sentiment-widget img {
-    width: var(--imgsize); 
-    height: var(--imgsize); 
-    display: block; 
-    margin: 0 auto 10px; 
-    transition: transform 0.3s ease; 
+    width: var(--imgsize); /*Set width using custom CSS variable*/
+    height: var(--imgsize); /*Set height using custom CSS variable*/
+    display: block; /*Display as block*/
+    margin: 0 auto 10px; /*Margin bottom*/
+    transition: transform 0.3s ease; /*Smooth transition effect*/
 }
 
+/*Sentiment Widget Input (Radio) : Styles for the radio inputs*/
 .sentiment-widget input[type="radio"] {
-    display: none;
+    display: none;/*Hide the radio inputs*/
 }
 
+/*Sentiment Widget Input (Radio) Checker: Styles for checked radio inputs*/
 .sentiment-widget input[type="radio"]:checked + img {
-    transform: scale(1.3); /* Scale up the image*/
+    transform: scale(1.3); /* Scale up the imag when checkede*/
 }
 
+/*Sentiment Widget Input (Radio) Hover: Styles for radion iputs on hover*/
 .sentiment-widget input[type="radio"]:hover + img {
-    transform: scale(1.3); /* Scale up the image*/
+    transform: scale(1.3); /* Scale up the image on hover*/
 }
 
+/*Sumbit Button: Styles for the submit button*/
 .submit {
-    display: block;
-    margin: auto;
-    background: #eb94d0;
-    /* create gradient */
+    display: block; /*Display the button as a block element*/
+    margin: auto;/*Center align horizontally*/
+    background: #eb94d0;/*Background color*/
+    /* Create a gradient background */
     background-image: -webkit-linear-gradient(top, #eb94d0, #2079b0);
     background-image: -moz-linear-gradient(top, #eb94d0, #2079b0);
     background-image: -ms-linear-gradient(top, #eb94d0, #2079b0);
     background-image: -o-linear-gradient(top, #eb94d0, #2079b0);
     background-image: linear-gradient(to bottom, #eb94d0, #2079b0);
     /* Add rounded corners to button */
-    width: 65pt;
-    -webkit-border-radius: 28;
-    -moz-border-radius: 28;
-    border-radius: 20px;
-    text-shadow: 3px 2px 1px #9daef5;
-    -webkit-box-shadow: 6px 5px 24px #666666;
-    -moz-box-shadow: 6px 5px 24px #666666;
-    box-shadow: 6px 5px 24px #666666;
-    font-family: Arial;
-    color: #fafafa;
-    font-size: 15px;
-    padding: 19px;
-    text-decoration: none;
+    width: 65pt; /*Set width*/
+    -webkit-border-radius: 28; /*Set border radius for WebKit browsers*/
+    -moz-border-radius: 28;/*Set border radius for Mozilla browsers*/
+    border-radius: 20px;/*Set border radius for other browsers*/
+    text-shadow: 3px 2px 1px #9daef5;/*Add text shadow*/
+    -webkit-box-shadow: 6px 5px 24px #666666;/*Add box shadow for webkit browsers*/
+    -moz-box-shadow: 6px 5px 24px #666666;/*Add box shadow for Mozilla browsers*/
+    box-shadow: 6px 5px 24px #666666;/*Add box shadows for other browsers*/
+    font-family: Arial; /*Set font family*/
+    color: #fafafa; /*Text Color*/
+    font-size: 15px;/*Font size*/
+    padding: 19px;/*Padding*/
+    text-decoration: none;/*Remove text decoration*/
 }
 
+/*Submit Button Hover: Styles for the submit botton on hover*/
 .submit:hover {
-    background: #2079b0;
+    background: #2079b0;/*Change background color on hover*/
+    /*Change gradient background on hover*/
     background-image: -webkit-linear-gradient(top, #2079b0, #eb94d0);
     background-image: -moz-linear-gradient(top, #2079b0, #eb94d0);
     background-image: -ms-linear-gradient(top, #2079b0, #eb94d0);
     background-image: -o-linear-gradient(top, #2079b0, #eb94d0);
     background-image: linear-gradient(to bottom, #2079b0, #eb94d0);
-    text-decoration: none;
+    text-decoration: none;/*Remove text decoration on hover*/
 }
 
+/*Sentiment Text: Styles for the sentiment text*/
 #sentiment_text {
-    margin-bottom: 15pt;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    background-color: #72aaf3;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
+    margin-bottom: 15pt; /*Margin bottom*/
+    font-family:'Georgia', 'Garamond', Arial, serif;/*Font Family*/
+    background-color: whitesmoke;/*Background color*/
+    margin-left: auto;/*Center align horizontally*/
+    margin-right: auto;/*Center align horizontally*/
+    text-align: center;/*Center align text*/
 }
 
+/*My Audio: Styles for the audio element*/
 #myAudio {
-    display: none;
+    display: none; /*Hide the audio element*/
 }
 
+/*Flex Container: Styles for the flex container*/
 .flex-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    display: flex; /*Display as flex container*/
+    flex-direction: column;/*Arrage items vertically*/
+    justify-content: center;/*Center align items vertically*/
+    align-items: center;/*Center align items horizontally*/
 }
