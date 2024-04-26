@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-    <!--Head-->
+    <!--Head: Contains metadata about the HTML document-->
     <head>
-        <meta charset="UTF-8">
-        <title>Warm-Up Sentiment Rating Widget</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <link rel="icon" type="image/x-icon" href="/media/favicon.ico">
+        <meta charset="UTF-8"> <!--Character encoding for the document-->
+        <title>Warm-Up Sentiment Rating Widget</title><!--Title of the HTML Document-->
+        <link rel="stylesheet" type="text/css" href="style.css"><!--Link to external CSS stylesheet-->
+        <link rel="icon" type="image/x-icon" href="/media/favicon.ico"><!--Link to favicon-->
+        <script src="index.js" defer></script><!--Link to external JavaScript file with "defer" attribute for deferred execution-->
     </head>
-    <!--Body-->
+    <!--Body: Contains the visible content of the HTML document-->
     <body>
+        
         <fieldset>
-            <!--Header-->
+            <!--Header: Contains the main heading of the document -->
             <header>
                 <h1>How was your day at work?</h1>
             </header>
-            <!--Main-->
+            <!--Main: Contains the main content of the document-->
             <main>
+                <!--Sentiment Widget: Allows users to rate their sentiment-->
                 <div class="sentiment-widget">
+                    <!--Sentiment options with radio buttons-->
                     <label for="rating1">
                         <input type="radio" id="rating1" name="rating" value="1">
                         <img class="sentiment_img" src="design-elements/Team404_Emoticons1.png" alt="image">
@@ -38,17 +42,23 @@
                         <img class="sentiment_img" src="design-elements/Team404_Emoticons5.png" alt="image">
                     </label>
                 </div>
+                <!--Flex Container: Contains elements with flexible layout-->
                 <div class="flex-container">
-                    <span id="sentiment_text" style="display: none;">sentiment</span>
+                    <!--Placehohlder for error message-->
+                    <span id="sentiment_text" style="display: none;">Please go back and choose a sentiment!</span>
+                    <!--Button to submit the rating-->
                     <button id="myButton" class="submit">Submit</button>
+                    <!--Audio element for feedback sound-->
                     <audio id="myAudio">
-                        <source src="./audio/click-21156.mp3" type="audio/mpeg">
+                        <source src="audio/click-21156.mp3" type="audio/mpeg">
                     </audio>
                 </div>
+                <!--Sentiment Output: Placeholder for message output-->
                 <div id="sentiment-output" style="display: none;">  <!--- placeholder for message -->
                 </div>
             </main>
         </fieldset>
-        <script src="script.js"></script> <!-- link to the JavaScript file -->
+        <!-- Script: Link to the JavaScript file -->
+        <script src="script.js"></script> 
     </body>
 </html>
