@@ -10,6 +10,8 @@ var emotion_text = ["Oh no, that sounds tough 😢",
 var audio = document.getElementById("myAudio"); 
 var images = document.querySelectorAll(".sentiment_img");
 
+document.getElementById("myButton").addEventListener("click", handleButtonClick);
+
 document.addEventListener('DOMContentLoaded', function() {
     const sentimentWidget = document.querySelector('.sentiment-widget');
     const sentimentOutput = document.createElement('div');
@@ -118,4 +120,19 @@ function submit() {
     sentiment_text.style.display = "inline";
     sentiment_text.margin = "0 auto";
     audio.muted = true;
+}
+
+function handleButtonClick() {
+    var button = document.getElementById("myButton");
+    if (button.innerText == "Submit") {
+        submit();
+        button.innerText = "Go Back";
+        button.onclick = function() {
+            goBack();
+        };
+    }
+}
+
+function goBack() {
+    window.location.reload();
 }
