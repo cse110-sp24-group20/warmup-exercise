@@ -106,7 +106,7 @@ header h1 {
 #sentiment_text {
     margin-bottom: 15pt;
     font-family:'Georgia', 'Garamond', Arial, serif;
-    /*background-color: #72aaf3;*/
+    background-color: whitesmoke;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
